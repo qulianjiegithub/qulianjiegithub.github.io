@@ -1,84 +1,395 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
-<meta charset="utf-8">
-<title>澄泓皓杨小站</title>
-<style>
+  <meta charset="UTF-8">
+  <!-- 适配移动端viewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>澄泓皓杨小站</title>
+  <style>
+    /* 全局样式：统一盒模型+基础重置 */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* 页面基础样式 */
     body {
-        font: 14px Arial,sans-serif;
-        margin: 0px;
+      font-family: Arial, sans-serif;
+      margin: 2px 10%; /* 上右下左：上下2px，左右10% */
     }
-    header {
-        padding: 10px 20px;
-        background: #acb3b9;
+
+    /* 头部样式 */
+    .header {
+      padding: 20px;
+      color: #000;
+      background-color: #99FFFF;
     }
-    header h1 {
-        font-size: 24px;
+    /* 头部内容容器：flex布局适配响应式 */
+    .header-container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
     }
-    .container {
+    /* 头部文字样式 */
+    .header-text {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+    .header-text h1 {
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+    .header-text p {
+      margin: 4px 0;
+    }
+    /* 头部图片：控制最大宽度，避免溢出 */
+    .header-img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* 导航栏样式 */
+    .navbar {
+      overflow: hidden;
+      background-color: #333;
+    }
+    .navbar a {
+      float: left;
+      display: block;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      padding: 30px 60px; /* 上下14px，左右60px */
+    }
+    /* 导航hover效果（修复原代码语法错误） */
+    .navbar a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+
+    /* 内容行：flex布局 */
+    .row {  
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    /* 侧边栏 */
+    .side {
+      flex: 20%;
+      background-color: #f1f1f1;
+      padding: 10px;
+      margin-right: 10px;
+    }
+    .side h3 {
+      margin: 30px 0 8px;
+    }
+    /* 占位图样式 */
+    .fakeimg {
+      background-color: #FFFFCC;
+      width: 100%;
+      padding: 1px;
+      margin-bottom: 8px;
+    }
+    .side .fakeimg img {
+      width: 100%;
+      height: auto;
+    }
+
+    /* 主内容区 */
+    .main {   
+      flex: 75%;
+      background-color: white;
+      padding: 10px;
+    }
+    .main h3 {
+      margin: 15px 0 8px;
+    }
+    /* 资源表格容器：解决小屏幕溢出 */
+    .table-container {
+      overflow-x: auto;
+      height: 600px;
+      padding: 10px;
+      background-color: #FFFFCC;
+    }
+    /* 资源表格样式 */
+    .table-resource {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    .table-resource th,
+    .table-resource td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: center;
+      height: 30px;
+    }
+    .table-resource th {
+      background-color: #eee;
+      width: 200px;
+    }
+    /* 表格行hover效果（柔和红色，可选改回#ff0000） */
+    .table-resource tr:hover {
+      background-color: #ffeeee;
+    }
+    /* 表格链接样式 */
+    .table-resource a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+    .table-resource a:hover {
+      text-decoration: underline;
+    }
+
+    /* 底部样式 */
+    .footer {
+      padding: 20px;
+      text-align: center;
+      background: #ddd;
+      margin-top: 10px;
+    }
+    .footer p {
+      margin: 5px 0;
+    }
+    .footer a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+
+    /* 响应式：屏幕<700px时，列垂直堆叠 */
+    @media screen and (max-width: 700px) {
+      .row {   
+        flex-direction: column;
+      }
+      .side {
+        margin-right: 0;
+        margin-bottom: 10px;
+      }
+      /* header文字居中，图片换行 */
+      .header-container {
+        flex-direction: column;
+      }
+    }
+
+    /* 响应式：屏幕<400px时，导航垂直堆叠 */
+    @media screen and (max-width: 400px) {
+      .navbar a {
+        float: none;
         width: 100%;
-        background: #f2f2f2;
+        padding: 14px 0;
+      }
+      /* 缩小body左右边距，适配小屏幕 */
+      body {
+        margin: 2px 5%;
+      }
     }
-    nav, section {
-        float: left;
-        padding: 20px;
-        min-height: 170px;
-        box-sizing: border-box;
-    }
-    section {
-        width: 80%;
-    }
-    nav {
-        width: 20%;           
-        background: #d4d7dc;
-    }  
-    nav ul {
-        list-style: none;
-        line-height: 24px;
-        padding: 0px;
-    }
-    nav ul li a {
-        color: #333;
-    }
-    .clearfix:after {
-        content: ".";
-        display: block;
-        height: 0;
-        clear: both;
-        visibility: hidden;
-    }
-    footer {
-        background: #acb3b9;          
-        text-align: center;
-        padding: 5px;
-    }
-</style>
+  </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>澄泓皓杨小站</h1>
-        </header>
-        <div class="wrapper clearfix">
-            <nav>
-                <ul>
-                    <li><a href="">首页</a></li>
-                    <li><a href="">1</a></li>
-                    <li><a href="">2</a></li>
-                    <li><a href="">3</a></li>
-                    <li><a href="/">4</a></li>
-                    <li><a href="">5</a></li>
-                </ul>
-            </nav>
-            <section>
-                <h2>网站简介</h2>
-                <p>C语言中文网创办于 2012 年初，是一个在线学习<b>编程</b>的网站。C语言中文网已经发布了众多优质编程教程，包括C语言、C++、Java、Python 等，它们都通俗易懂，深入浅出。</p>
-                <p>C语言中文网将会持续更新，并且不忘初心，坚持创作优质教程。</p>
-            </section>
-        </div>
-        <footer>
-            <p>www.biancheng.net</p>
-        </footer>
+  <!-- 头部区域：flex布局替代表格 -->
+  <div class="header">
+    <div class="header-container">
+      <div class="header-text">
+        <h1>《增广贤文·上集》</h1>
+        <p>有田不耕仓禀虚，有书不读子孙愚。</p>
+        <p>宝剑锋从磨砺出，梅花香自苦寒来。</p>
+        <p>少壮不知勤学苦，老来方悔读书迟。</p>
+      </div>
+      <div>
+        <img src="https://img.tukuppt.com/bg_grid/26/58/43/SG6YFcjxIm.jpg" alt="family" class="header-img" width="413" height="150">
+      </div>
     </div>
+  </div>
+
+  <!-- 导航栏 -->
+  <div class="navbar">
+    <a href="#">没有链接</a>
+    <a href="#">没有链接</a>
+    <a href="#">没有链接</a>
+
+  </div>
+
+  <!-- 内容区：侧边栏+主内容 -->
+  <div class="row">
+    <div class="side">
+      <h3>本站内容</h3>
+      <div class="fakeimg">
+        <img src="https://pic.rmb.bdstatic.com/60a3fe97cf20766738779518bfbaa51a.jpeg" alt="编程相关图片">
+      </div>
+      
+      <h3>更多内容</h3>
+      <p>我的更多内容</p>
+      <div class="fakeimg" style="height:60px;">
+      <img src="https://pic.rmb.bdstatic.com/bjh/d0bd1f652a3c4956baa3a74426939ee19300.jpeg" alt="编程相关图片">
+      </div>
+      <div class="fakeimg" style="height:60px;">
+      <img src="https://sns-img-hw.xhscdn.com/1000g00825pgkq66fi0105olak9s6stuiq0ci8cg?imageView2/2/h/1080/format/webp" alt="编程相关图片">
+      </div>
+      <div class="fakeimg" style="height:60px;">
+      <img src="https://p9.itc.cn/q_70/images03/20220219/2fb852a9678b4034a340cced8e7bcd2a.jpeg" alt="编程相关图片">
+      </div>
+    </div>
+
+    <div class="main">
+      <h3>可用资源</h3>
+      <!-- 表格容器：解决小屏幕横向滚动 -->
+      <div class="table-container">
+        <table class="table-resource">
+          <tr>
+            <th>归属</th>
+            <th>分类</th>
+            <th>网址</th>
+            <th>描述</th>
+          </tr>
+          <tr>
+            <td>在线编程</td>
+            <td>Python</td>
+            <td><a href="https://python123.io/" target="_blank">https://python123.io/</a></td>
+            <td>微信登陆</td>
+          </tr>
+          <tr>
+            <td>编程工具</td>
+            <td>二维码生成</td>
+            <td><a href="https://c.runoob.com/front-end/3454/" target="_blank">https://c.runoob.com/</a></td>
+            <td>在线生成下载</td>
+          </tr>
+          <tr>
+            <td>编程工具</td>
+            <td>取色器</td>
+            <td><a href="https://c.runoob.com/front-end/5449/#a9f5d0" target="_blank">https://c.runoob.com/</a></td>
+            <td>各种颜色代码</td>
+          </tr>
+          <tr>
+            <td>编程工具</td>
+            <td>取色器</td>
+            <td><a href="https://c.runoob.com/front-end/6214/#9ac6a3" target="_blank">https://c.runoob.com</a></td>
+            <td>图片取色</td>
+          </tr>
+          <tr>
+            <td>编程工具</td>
+            <td>加水印</td>
+            <td><a href="https://c.runoob.com/front-end/6502/" target="_blank">https://c.runoob.com</a></td>
+            <td>图片加任意字水印</td>
+          </tr>
+          <tr>
+            <td>文献资料</td>
+            <td>鸠摩搜书</td>
+            <td><a href="https://www.jiumodiary.com/" target="_blank">https://www.jiumodiary.com/</a></td>
+            <td>搜一些电子书</td>
+          </tr>
+          <tr>
+            <td>图片资源</td>
+            <td>Unsplash</td>
+            <td><a href="https://unsplash.com/" target="_blank">https://unsplash.com/</a></td>
+            <td>——</td>
+          </tr>
+          <tr>
+            <td>在线学习</td>
+            <td>中国大学MOOC</td>
+            <td><a href="https://www.icourse163.org/" target="_blank">https://www.icourse163.org/</a></td>
+            <td>各种课程</td>
+          </tr>
+          <tr>
+            <td>PPT</td>
+            <td>PPT宝藏</td>
+            <td><a href="http://www.pptbz.com/ppt/" target="_blank">http://www.pptbz.com/ppt/</a></td>
+            <td>PPT模板下载</td>
+          </tr>
+          <tr>
+            <td>Python学习</td>
+            <td>Pandas画图</td>
+            <td><a href="https://blog.csdn.net/weixin_45698637/article/details/122788909/" target="_blank">CSDN文章链接</a></td>
+            <td>pandas画图参数介绍</td>
+          </tr>
+          <tr>
+            <td>邮箱</td>
+            <td>邮箱</td>
+            <td><a href="https://rec.ustc.edu.cn/profile" target="_blank">USTC邮箱</a></td>
+            <td>——</td>
+          </tr>
+          <tr>
+            <td>行业报告</td>
+            <td>行行查</td>
+            <td><a href="https://www.hanghangcha.com/industry" target="_blank">行行查</a></td>
+            <td>——</td>
+          </tr>
+          <tr>
+            <td>熊猫办公</td>
+            <td>模板</td>
+            <td><a href="https://www.tukuppt.com/muban/blexjwmq.html" target="_blank">PPT制作</a></td>
+            <td>——</td>
+          </tr>
+          <tr>
+            <td>第1 PPT制作</td>
+            <td>模板</td>
+            <td><a href="http://www.1ppt.com" target="_blank">http://www.1ppt.com</a></td>
+            <td>——</td>
+          </tr>
+          <tr>
+            <td>FTP服务器搭建</td>
+            <td>工具教程</td>
+            <td><a href="https://www.jb51.net/article/259714.htm" target="_blank">FTP搭建</a></td>
+            <td>——</td>
+          </tr>
+          <tr>
+            <td>博敏电子</td>
+            <td>企业官网</td>
+            <td><a href="https://www.bominelec.com/product/Default.aspx" target="_blank">PCB制程能力</a></td>
+            <td>——</td>
+          </tr>
+          <tr>
+            <td>LED inside</td>
+            <td>行业资讯</td>
+            <td><a href="https://www.ledinside.cn/" target="_blank">Led inside</a></td>
+            <td>——</td>
+          </tr>
+          <tr>
+            <td>Mini LED产业网</td>
+            <td>行业资讯</td>
+            <td><a href="http://www.m-led.cn/" target="_blank">Mini LED产业网</a></td>
+            <td>——</td>
+          </tr>
+          <tr>
+            <td>Micro LED网</td>
+            <td>行业资讯</td>
+            <td><a href="https://www.microled.cn/" target="_blank">Micro LED网</a></td>
+            <td>——</td>
+          </tr>
+          <tr>
+            <td>微信公众号</td>
+            <td>搜索平台</td>
+            <td><a href="https://weixin.sogou.com/" target="_blank">微信公众号</a></td>
+            <td>——</td>
+          </tr>
+          <tr>
+            <td>Python</td>
+            <td>matplotlib应用</td>
+            <td><a href="https://blog.csdn.net/qq_43874317/article/details/127973584" target="_blank">matplotlib教程</a></td>
+            <td>——</td>
+          </tr>
+          <tr>
+            <td>FTP建立</td>
+            <td>工具教程</td>
+            <td><a href="https://blog.csdn.net/dechenBlog/article/details/127597879" target="_blank">FTP教程</a></td>
+            <td>——</td>
+          </tr>
+          <tr>
+            <td>财务爬虫</td>
+            <td>技术教程</td>
+            <td><a href="https://www.zhangshilong.cn/work/357757.html" target="_blank">pandas_html</a></td>
+            <td>——</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- 底部区域 -->
+  <div class="footer">
+    <p><a href="http://www.beian.miit.gov.cn" target="_blank">京ICP备18008458号-2</a></p>
+    <p>Copyright © 2022 LJQ. All rights reserved.</p>
+  </div>
 </body>
 </html>
