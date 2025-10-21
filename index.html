@@ -6,8 +6,8 @@
   <title>澄泓皓杨小站</title>
 </head>
 <body style="margin:0; padding:0; background-color:white; font-family:Arial, sans-serif;">
-  <!-- 整体容器（占屏幕2/3） -->
-  <div style="width:66.666%; margin:0 auto; background-color:white; min-height:100vh;">
+  <!-- 整体容器（自适应宽度：小屏100%，大屏最大66.666%） -->
+  <div style="width:100%; max-width:66.666%; margin:0 auto; background-color:white; min-height:100vh;">
     
     <!-- 横幅区域 -->
     <div style="background-color:#F1F5F9; color:#334155; padding:20px;border:#E2E8F0">
@@ -15,11 +15,11 @@
       <p style="margin:0;color:#334155"><marquee behavior="scroll" direction="left">记录一些有趣的网站资源用！</marquee></p>
     </div>
     
-    <!-- 主要内容区 -->
-    <div style="padding:20px; overflow:hidden;background-color:#f5f5f5">
+    <!-- 主要内容区（弹性布局，自动换行） -->
+    <div style="padding:10px 20px; display:flex; flex-wrap:wrap; background-color:#f5f5f5;">
       
-      <!-- 左侧区域（占1/4） -->
-      <div style="width:25%; float:left; padding-right:20px; box-sizing:border-box;">
+      <!-- 左侧区域（弹性占比25%，小屏自动换行） -->
+      <div style="flex:1 1 25%; padding-right:20px; box-sizing:border-box; margin-bottom:20px;">
         
         <!-- 左侧上内容块 -->
         <div style="border:1px solid #ddd; padding:15px; margin-bottom:20px;background-color:#FFFFFF">
@@ -44,11 +44,12 @@
         </div>
       </div>
       
-      <!-- 右侧表格区域（占3/4） -->
-      <div style="width:75%; float:right; box-sizing:border-box;">
-        <div style="border:1px solid #ddd; padding:15px;">
+      <!-- 右侧表格区域（弹性占比75%，小屏自动换行） -->
+      <div style="flex:1 1 75%; box-sizing:border-box;">
+        <!-- 表格容器（允许横向滚动） -->
+        <div style="border:1px solid #ddd; padding:15px; overflow-x:auto;">
           <h2 style="margin:0 0 15px 0; font-size:18px;">数据表格（10行4列）</h2>
-          <table style="width:100%; border-collapse:collapse;">
+          <table style="width:100%; min-width:500px; border-collapse:collapse;">
             <thead>
               <tr>
                 <th style="border:1px solid #ddd; padding:8px; text-align:left; font-size:14px; background-color:#f0f0f0;">归属</th>
