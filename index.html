@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -8,20 +9,10 @@
 
   
   <style>/* 文字下方互动 */
-    .container {
-      padding: 50px;
-      font-family: sans-serif;
-      display: flex;
-      gap: 40px;
-      align-items: center;
-      justify-content: center;
-      min-height: 80vh;
-      margin: 0;
-    }
     /* 效果2：文字链接下划线动画 */
     .link-underline {
       color: #8b5cf6;
-      font-size: 18px;
+      font-size: 14px;
       text-decoration: none;
       position: relative;
     }
@@ -31,39 +22,12 @@
       bottom: -2px;
       left: 0;
       width: 0;
-      height: 2px;
+      height: 1px;
       background: #8b5cf6;
       transition: width 0.3s ease; /* 下划线展开动画 */
     }
     .link-underline:hover::after {
       width: 100%; /*  hover时下划线展开 */
-    }
-  </style>
-
-  <style> /* 鼠标跟随 */
-    body {
-      margin: 0;
-      min-height: 100vh;
-      background: #ffffff; /* 改为白色背景 */
-      font-family: sans-serif;
-      color: #1e293b; /* 文字改为深色，适应白色背景 */
-      padding: 20px;
-    }
-    .content {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      padding-top: 50px;
-    }
-    /* Canvas全屏，放在背景层 */
-    #trail-canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: 0;
-      pointer-events: none; /* 不阻挡点击 */
     }
   </style>
 
@@ -129,6 +93,7 @@
 </head>
 <body style="margin:0; padding:0; background-color:white; font-family:Arial, sans-serif;">
 
+    <!-- 背景区域 -->
     <div class="shape-bg">
     <div class="shape shape1"></div>
     <div class="shape shape2"></div>
@@ -142,7 +107,7 @@
     <!-- 横幅区域 -->
     <div style="background-color:#F1F5F9; color:#334155; padding:20px;border:#E2E8F0">
       <h1 style="margin:0 0 10px 0;color:#334155">澄泓皓杨</h1>
-      <p style="margin:0;color:#334155"><marquee behavior="scroll" direction="left" class="link-underline">记录一些有趣的网站资源！</marquee></p>
+      <p style="margin:0;color:#334155"><marquee behavior="scroll" direction="left" >记录一些有趣的网站资源！</marquee></p>
     </div>
 
     <!-- 浅灰色横线 -->
@@ -236,7 +201,7 @@
   <tr style="background-color:#fafafa; transition:background-color 0.2s;">
     <td style="border:1px solid #e0e0e0; padding:10px; font-size:14px; color:#555;">PPT模板</td>
     <td style="border:1px solid #e0e0e0; padding:10px; font-size:14px; color:#555;">PPT宝藏</td>
-    <td style="border:1px solid #e0e0e0; padding:10px; font-size:14px;"><a href="http://www.pptbz.com/ppt/" target="_blank" style="color:#2c6ecb; text-decoration:none; hover:text:#1a4b8f; hover:underline;">http://www.pptbz.com/ppt/</a></td>
+    <td style="border:1px solid #e0e0e0; padding:10px; font-size:14px;"><a href="http://www.pptbz.com/ppt/" target="_blank" style="color:#2c6ecb; text-decoration:none; hover:text:#1a4b8f; hover:underline;" class="link-underline">http://www.pptbz.com/ppt/</a></td>
     <td style="border:1px solid #e0e0e0; padding:10px; font-size:14px; color:#555;">PPT模板下载</td>
   </tr>
   
@@ -250,35 +215,35 @@
   <tr style="background-color:#fafafa; transition:background-color 0.2s;">
     <td style="border:1px solid #e0e0e0; padding:10px; font-size:14px; color:#555;">Digikey</td>
     <td style="border:1px solid #e0e0e0; padding:10px; font-size:14px; color:#555;">电子器件分销及规格查询</td>
-    <td style="border:1px solid #e0e0e0; padding:10px; font-size:14px;"><a href="https://www.digikey.cn/" target="_blank" style="color:#2c6ecb; text-decoration:none; hover:text:#1a4b8f; hover:underline;">https://www.digikey.cn/</a></td>
+    <td style="border:1px solid #e0e0e0; padding:10px; font-size:14px;"><a href="https://www.digikey.cn/" target="_blank" style="color:#2c6ecb; text-decoration:none; hover:text:#1a4b8f; hover:underline;" class="link-underline">https://www.digikey.cn/</a></td>
     <td style="border:1px solid #e0e0e0; padding:10px; font-size:14px; color:#555;">器件规格查询</td>
   </tr>
   
   <tr style="transition:background-color 0.2s;">
     <td style="border:1px solid #e0e0e0; padding:10px; font-size:14px; color:#555;">splcd</td>
     <td style="border:1px solid #e0e0e0; padding:10px; font-size:14px; color:#555;">屏幕规格查询</td>
-    <td style="border:1px solid #e0e0e0; padding:10px; font-size:14px;"><a href="https://www.splcd.com" target="_blank" style="color:#2c6ecb; text-decoration:none; hover:text:#1a4b8f; hover:underline;">www.splcd.com</a></td>
+    <td style="border:1px solid #e0e0e0; padding:10px; font-size:14px;"><a href="https://www.splcd.com" target="_blank" style="color:#2c6ecb; text-decoration:none; hover:text:#1a4b8f; hover:underline;" class="link-underline">www.splcd.com</a></td>
     <td style="border:1px solid #e0e0e0; padding:10px; font-size:14px; color:#555;">屏幕规格</td>
   </tr>
   
   <tr style="background-color:#fafafa; transition:background-color 0.2s;">
     <td style="border:1px solid #e0e0e0; padding:10px; font-size:14px; color:#555;">panelook</td>
     <td style="border:1px solid #e0e0e0; padding:10px; font-size:14px; color:#555;">Panel规格查询</td>
-    <td style="border:1px solid #e0e0e0; padding:10px; font-size:14px;"><a href="https://www.panelook.com/" target="_blank" style="color:#2c6ecb; text-decoration:none; hover:text:#1a4b8f; hover:underline;">https://www.panelook.com/</a></td>
+    <td style="border:1px solid #e0e0e0; padding:10px; font-size:14px;"><a href="https://www.panelook.com/" target="_blank" style="color:#2c6ecb; text-decoration:none; hover:text:#1a4b8f; hover:underline;" class="link-underline">https://www.panelook.com/</a></td>
     <td style="border:1px solid #e0e0e0; padding:10px; font-size:14px; color:#555;">——</td>
   </tr>
 
   <tr style="background-color:#fafafa; transition:background-color 0.2s;">
     <td style="border:1px solid #e0e0e0; padding:10px; font-size:14px; color:#555;">网络资源</td>
     <td style="border:1px solid #e0e0e0; padding:10px; font-size:14px; color:#555;">网络资源</td>
-    <td style="border:1px solid #e0e0e0; padding:10px; font-size:14px;"><a href="https://www.jyshare.com/" target="_blank" style="color:#2c6ecb; text-decoration:none; hover:text:#1a4b8f; hover:underline;">https://www.jyshare.com/</a></td>
+    <td style="border:1px solid #e0e0e0; padding:10px; font-size:14px;"><a href="https://www.jyshare.com/" target="_blank" style="color:#2c6ecb; text-decoration:none; hover:text:#1a4b8f; hover:underline;" class="link-underline">https://www.jyshare.com/</a></td>
     <td style="border:1px solid #e0e0e0; padding:10px; font-size:14px; color:#555;">——</td>
   </tr>
 
   <tr style="background-color:#fafafa; transition:background-color 0.2s;">
     <td style="border:1px solid #e0e0e0; padding:10px; font-size:14px; color:#555;">硅光技术</td>
     <td style="border:1px solid #e0e0e0; padding:10px; font-size:14px; color:#555;">硅光介绍</td>
-    <td style="border:1px solid #e0e0e0; padding:10px; font-size:14px;"><a href="https://www.36kr.com/p/3531128462531714" target="_blank" style="color:#2c6ecb; text-decoration:none; hover:text:#1a4b8f; hover:underline;">https://www.36kr.com/p/3531128462531714</a></td>
+    <td style="border:1px solid #e0e0e0; padding:10px; font-size:14px;"><a href="https://www.36kr.com/p/3531128462531714" target="_blank" style="color:#2c6ecb; text-decoration:none; hover:text:#1a4b8f; hover:underline;" class="link-underline">https://www.36kr.com/p/3531128462531714</a></td>
     <td style="border:1px solid #e0e0e0; padding:10px; font-size:14px; color:#555;">——</td>
   </tr>
 
@@ -306,72 +271,6 @@
     </div>
   </div>
 
-
-  <div class="content">
-    <h1>鼠标粒子拖尾</h1>
-    <p>移动鼠标，会生成一串消散的粒子</p>
-  </div>
-
-  <!-- Canvas用于绘制粒子 -->
-  <canvas id="trail-canvas"></canvas>
-
-  <script>
-    const canvas = document.getElementById('trail-canvas');
-    const ctx = canvas.getContext('2d');
-
-    // 设置Canvas尺寸为窗口大小
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-
-    // 存储粒子的数组
-    let particles = [];
-
-    // 监听鼠标移动，生成粒子
-    document.addEventListener('mousemove', (e) => {
-      particles.push({
-        x: e.clientX,
-        y: e.clientY,
-        size: Math.random() * 6 + 2, // 粒子大小（2-8px）
-        color: `hsl(${Math.random() * 60 + 200}, 100%, 50%)`, // 调整饱和度，在白色背景更明显
-        opacity: 1,
-        speedX: (Math.random() - 0.5) * 2, // 水平随机偏移
-        speedY: (Math.random() - 0.5) * 2, // 垂直随机偏移
-        decay: 0.02 // 消散速度（越大消失越快）
-      });
-    });
-
-    // 绘制并更新粒子
-    function updateParticles() {
-      // 清空Canvas
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
-      particles.forEach((particle, index) => {
-        // 绘制粒子
-        ctx.beginPath();
-        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-        ctx.fillStyle = `${particle.color.slice(0, -1)}, ${particle.opacity})`;
-        ctx.fill();
-
-        // 更新粒子位置和透明度
-        particle.x += particle.speedX;
-        particle.y += particle.speedY;
-        particle.opacity -= particle.decay;
-
-        // 移除完全透明的粒子（优化性能）
-        if (particle.opacity <= 0) {
-          particles.splice(index, 1);
-        }
-      });
-
-      // 循环调用，实现动画
-      requestAnimationFrame(updateParticles);
-    }
-    updateParticles();
-  </script>
   
 </body>
 </html>
