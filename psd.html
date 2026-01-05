@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <!-- 额外添加兼容标签，确保老旧浏览器也能正确识别中文编码 -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>透明账号表格</title>
+    <style>
+        /* 表格及单元格样式：完全透明配置 */
+        table, th, td {
+            /* 表格边框透明 */
+            border: 1px solid transparent;
+            /* 合并边框，确保无多余非透明间隙 */
+            border-collapse: collapse;
+        }
+        th, td {
+            /* 单元格背景透明 */
+            background-color: transparent;
+            /* 文字颜色透明（核心：正常显示看不见文字） */
+            color: transparent;
+            /* 内边距（不影响透明效果，仅优化单元格布局） */
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tbody>
+            <tr>
+                <td>github.com</td>
+                <td>qulianjie@qq.com</td>
+                <td>B23324</td>
+                <td>2026-01</td>
+            </tr>
+            <tr>
+                <td>github.com</td>
+                <td>qulianjie@qq.com</td>
+                <td>B23324</td>
+                <td>2026-01</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
