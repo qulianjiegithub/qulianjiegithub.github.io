@@ -5,6 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>澄泓皓杨</title>
 
+    <style>
+        /* 核心：设置body的背景图片 */
+        body {
+            /* 指定背景图片路径（同文件夹直接写文件名） */
+            background-image: url("horse.jpg");
+            /* 让图片覆盖整个页面，保持比例并裁剪超出部分 */
+            background-size: cover;
+            /* 防止图片重复平铺 */
+            background-repeat: no-repeat;
+            /* 背景固定，滚动页面时不跟随移动（可选，体验更好） */
+            background-attachment: fixed;
+            /* 让body占满整个视口高度，确保背景覆盖全屏 */
+            min-height: 100vh;
+            /* 清除默认边距，避免出现空白 */
+            margin: 0;
+            padding: 0;
+        }
+    </style>
   
   <style>/* 文字下方互动 */
     /* 效果2：文字链接下划线动画 */
